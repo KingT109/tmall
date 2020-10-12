@@ -110,7 +110,10 @@ var floorNav=document.querySelector(".floor-nav");
 
 //楼层按钮以及楼层内容的对象集合
 var floorBtns=document.querySelectorAll(".floor-nav-list");
+
 var floorCons=document.querySelectorAll(".floor-list");
+// alert(floorBtns.length);
+// alert(floorCons.length);
 
 // var floorNavFirst=document.querySelector(".floor-nav-first");
 // floorNavFirst.onclick=function () {
@@ -125,11 +128,17 @@ backTop.onclick=function () {
     },1000,Tween.Linear)
 }
 
+
 // 记录每一个楼层的top值
 for(var i=0;i<floorBtns.length;i++){
-    floorBtns[i].top=floorCons[i].offsetTop;
+    floorBtns[i].top=floorCons[i].getBoundingClientRect().y;
+     floorCons[i].setAttribute("top",floorCons[i].offsetTop);
+    floorCons[i].setAttribute("top1",floorCons[i].getBoundingClientRect().y);
     floorBtns[i].height=floorCons[i].offsetHeight;
+    // floorCons[i].setAttribute("top",floorCons[i].offsetHeight)
+    // floorCons[i].setAttribute("top1",floorCons[i].getBoundingClientRect().height)
     floorBtns[i].onclick=function () {
+        console.log(this.top);
         animate(document.documentElement,{
             scrollTop:this.top
         },1000,Tween.Linear);
@@ -137,15 +146,52 @@ for(var i=0;i<floorBtns.length;i++){
     }
 }
 
+    //下拉刷新
+    // window.scroll=function(){
+    //     var st=document.documentElement.scrollTop;//获取浏览器窗口滚动条位置
+
+    //     //鼠标滚动，页面加载
+    //     for(var i=0;i<abcde.length;i++){
+    //         abcde[i].top=abcde[i].offsetTop;
+    //         abcde[i].height=abcde[i].offsetHeight;
+    //         if(!abcde[i].flag){
+    //             if(st>abcde[i].top-document.documentElement.clientHeight){
+    //                 var imgsAll=abcde[i].querySelectorAll("img");
+    //                 for(var j=0;j<imgsAll.length;j++){
+    //                     imgsAll[j].src=imgsAll[j].getAttribute("aa");
+    //                 }
+    //                 abcde[i].flag=true;
+    //             }
+    //         }
+    //     }
+    // }
+
+var abcde=document.querySelectorAll(".abcde");
 window.onscroll=function () {
     var st=document.documentElement.scrollTop;
+    //鼠标滚动，页面加载
+    for(var i=0;i<abcde.length;i++){
+        abcde[i].top=abcde[i].offsetTop;
+        abcde[i].height=abcde[i].offsetHeight;
+        if(!abcde[i].flag){
+            if(st>abcde[i].top-document.documentElement.clientHeight){
+                var imgsAll=abcde[i].querySelectorAll("img");
+                for(var j=0;j<imgsAll.length;j++){
+                    imgsAll[j].src=imgsAll[j].getAttribute("aa");
+                }
+                abcde[i].flag=true;
+            }
+        }
+    }
     //  搜索框
-    if(st<600){
+
+    if(st<1000){
         search.style.top="-50px";
     }else{
         search.style.top=0;
     }
 
+    
     // 处理侧边导航
     if(st<600){
         floorNav.style.opacity=0;
@@ -164,7 +210,12 @@ window.onscroll=function () {
             floorBtns[i].style.background=floorBtns[i].getAttribute("color");
         }
     }
+
+    
 }
+
+
+
 
 //天猫超市的选项卡
 var goodsOptis=document.querySelectorAll(".goods-opts .goods-opt");
@@ -183,6 +234,7 @@ var goodsConis=document.querySelectorAll(".goods-cons .goods-con");
 //         goodsCons[this.index].style.display='block';
 //     }
 // }
+
 function tab(optis,contis,type="onmouseover",color="#00b262") {
     for(var i=0;i<goodsOptis.length;i++){
         optis[i].index=i;
