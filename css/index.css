@@ -542,8 +542,50 @@ nav .menu .menu-list a{
     color: #666666;
     font-size: 14px;
 }
-.conlistsRIght .listcolor{
+.cons .cons-list:nth-child(1)  .listcolor{
     color: #e54077;
+}
+.cons .cons-list:nth-child(2) .listcolor{
+    color: #0000ff;
+}
+.cons .cons-list:nth-child(3) .listcolor{
+    color: #ffa500;
+}
+.cons .cons-list:nth-child(4)  .listcolor{
+    color: #0000ff;
+}
+.cons .cons-list:nth-child(5) .listcolor{
+    color: #ffA500;
+}
+.cons .cons-list:nth-child(6) .listcolor{
+    color: pink;
+}
+.cons .cons-list:nth-child(7) .listcolor{
+    color: purple;
+}
+.cons .cons-list:nth-child(8) .listcolor{
+    color: #ffA500;
+}
+.cons .cons-list:nth-child(9) .listcolor{
+    color: blue;
+}
+.cons .cons-list:nth-child(10) .listcolor{
+    color: red;
+}
+.cons .cons-list:nth-child(11) .listcolor{
+    color: yellow;
+}
+.cons .cons-list:nth-child(12) .listcolor{
+    color: green;
+}
+.cons .cons-list:nth-child(13) .listcolor{
+    color: rgb(80, 163, 138);
+}
+.cons .cons-list:nth-child(14) .listcolor{
+    color: greenyellow;
+}
+.cons .cons-list:nth-child(16) .listcolor{
+    color: green;
 }
 .conlistsRIght .hrr{
     border-bottom: 1px dashed #999999;
